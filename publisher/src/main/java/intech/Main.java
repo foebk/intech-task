@@ -1,14 +1,16 @@
 package intech;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Logger;
+
 
 public class Main {
-    private static final Logger logger = Logger.getLogger(Main.class.getName());
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
         System.out.println("Publisher is running");
@@ -36,7 +38,7 @@ public class Main {
                 int responseCode = PostMessage.post(jsonRequest);
 
                 if (responseCode == 200) {
-                    logger.info("Message was sent");
+                    logger.info("Message has been sent");
                 }
                 else {
                     logger.info("Message not sent. HTTP error: ".concat(String.valueOf(responseCode)));
